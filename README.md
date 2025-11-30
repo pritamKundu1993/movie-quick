@@ -2,7 +2,7 @@
 
 A full-stack movie booking application built with React.js, featuring real-time seat selection, admin dashboard, and TMDB API integration.
 
-![React](https://img.shields.io/badge/React-18.2.0-blue?style=flat&logo=react)
+![React](https://img.shields.io/badge/React-19.1.1-blue?style=flat&logo=react)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.2-purple?style=flat&logo=bootstrap)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat)
 ![Status](https://img.shields.io/badge/Status-Active-success?style=flat)
