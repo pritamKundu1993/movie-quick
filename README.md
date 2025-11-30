@@ -105,8 +105,8 @@ Movie Quick is a comprehensive movie ticket booking system that allows users to 
 
 ### Frontend
 
--   **React 18.2.0** - UI Library
--   **React Router DOM v6** - Routing
+-   **React 19.1.1** - UI Library
+-   **React Router DOM 7** - Routing
 -   **Bootstrap 5.3.2** - UI Framework
 -   **Context API** - State Management
 -   **React Hooks** - Component Logic
