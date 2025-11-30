@@ -1,0 +1,23 @@
+/* Add this to your App.css or index.css */
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.navbar {
+    background-color: transparent !important;
+}
+
+.navbar-nav {
+    list-style: none;
+}
+
+.nav-link {
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.nav-link:hover {
+    opacity: 0.8;
+}
