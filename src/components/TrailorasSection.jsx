@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { API_OPTIONS, BACKGROUND_VIDEO_BASE_API_URL, IMAGE_CDN } from '../utils/constants';
 import LoadingComponents from './LoadingComponents';
 
-const Trailers = () => {
+const TrailersSection = () => {
     const [trailers, setTrailers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [selectedTrailer, setSelectedTrailer] = useState(null);
@@ -15,7 +15,7 @@ const Trailers = () => {
         try {
             const response = await fetch(
                 `${BACKGROUND_VIDEO_BASE_API_URL}/movie/popular?language=en-US&page=1`,
-                API_OPTIONS
+                API_OPTIONS,
             );
             const data = await response.json();
 
@@ -24,12 +24,12 @@ const Trailers = () => {
                     try {
                         const videoResponse = await fetch(
                             `${BACKGROUND_VIDEO_BASE_API_URL}/movie/${movie.id}/videos?language=en-US`,
-                            API_OPTIONS
+                            API_OPTIONS,
                         );
                         const videoData = await videoResponse.json();
 
                         const trailer = videoData.results.find(
-                            (video) => video.type === 'Trailer' && video.site === 'YouTube'
+                            (video) => video.type === 'Trailer' && video.site === 'YouTube',
                         );
 
                         if (trailer) {
@@ -154,4 +154,4 @@ const Trailers = () => {
     );
 };
 
-export default Trailers;
+export default TrailersSection;
