@@ -14,21 +14,31 @@ const Header = () => {
 
     return (
         <nav
-            className="navbar navbar-expand-lg navbar-dark position-absolute top-0 w-100 py-3"
+            className="navbar navbar-dark position-absolute top-0 w-100 py-3"
             style={{
                 backgroundColor: 'transparent',
                 zIndex: 1030,
             }}
         >
-            <div className="container d-flex justify-content-between align-items-center">
+            <div className="container">
                 {/* Logo */}
                 <Link className="navbar-brand fw-bold text-light fs-3" to="/">
                     <img src={logo} alt="QuickShow Logo" height="35" className="me-2" />
                 </Link>
 
-                {/* Navbar links */}
-                <div className="d-none d-lg-flex align-items-center">
-                    <ul className="navbar-nav me-4 mb-0">
+                {/* Mobile Toggle Button (Bootstrap 4) */}
+                <button
+                    className="navbar-toggler border-0 d-lg-none"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#mobileNavbar"
+                >
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+
+                {/* ================= DESKTOP NAVBAR ================= */}
+                <div className="d-none d-lg-flex align-items-center ms-auto">
+                    <ul className="navbar-nav me-4 mb-0 flex-row">
                         <li className="nav-item">
                             <Link className="nav-link text-light px-3" to="/">
                                 Home
@@ -40,7 +50,6 @@ const Header = () => {
                             </Link>
                         </li>
 
-                        {/* Show My Bookings only when authenticated */}
                         {isAuthenticated && (
                             <li className="nav-item">
                                 <Link className="nav-link text-light px-3" to="/my-bookings">
@@ -49,35 +58,28 @@ const Header = () => {
                             </li>
                         )}
 
-                        {/* Show Admin link only for admin users */}
                         {isAuthenticated && isAdmin() && (
                             <li className="nav-item">
                                 <Link className="nav-link text-warning px-3" to="/admin">
-                                    <i className="bi bi-speedometer2 me-1"></i>
                                     Admin
                                 </Link>
                             </li>
                         )}
                     </ul>
 
-                    {/* Authentication Section */}
                     {isAuthenticated ? (
                         <div className="d-flex align-items-center gap-3">
-                            {/* User Avatar & Name */}
-                            <div className="d-flex align-items-center justify-content-center gap-2">
+                            <div className="d-flex align-items-center gap-2">
                                 <img
                                     src={user?.avatar}
                                     alt={user?.name}
-                                    className="rounded-circle me-2"
+                                    className="rounded-circle"
                                     width="40"
                                     height="40"
                                     style={{ border: '2px solid #dc3545' }}
                                 />
                                 <div className="text-light">
-                                    <div
-                                        className="fw-bold"
-                                        style={{ fontSize: '14px', marginRight: '4px' }}
-                                    >
+                                    <div className="fw-bold" style={{ fontSize: '14px' }}>
                                         {user?.name}
                                     </div>
                                     <div
@@ -89,7 +91,6 @@ const Header = () => {
                                 </div>
                             </div>
 
-                            {/* Logout Button */}
                             <button
                                 onClick={handleLogout}
                                 className="btn btn-outline-danger px-4 rounded-pill"
@@ -102,6 +103,57 @@ const Header = () => {
                             Log In
                         </Link>
                     )}
+                </div>
+
+                {/* ================= MOBILE NAVBAR ================= */}
+                <div
+                    className="collapse navbar-collapse d-lg-none mt-3 p-3 rounded"
+                    id="mobileNavbar"
+                    style={{ backgroundColor: 'rgba(0,0,0,0.85)' }}
+                >
+                    <ul className="navbar-nav text-center">
+                        <li className="nav-item">
+                            <Link className="nav-link text-light" to="/">
+                                Home
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link text-light" to="/top-rated">
+                                Top Rated
+                            </Link>
+                        </li>
+
+                        {isAuthenticated && (
+                            <li className="nav-item">
+                                <Link className="nav-link text-light" to="/my-bookings">
+                                    🎟️ My Bookings
+                                </Link>
+                            </li>
+                        )}
+
+                        {isAuthenticated && isAdmin() && (
+                            <li className="nav-item">
+                                <Link className="nav-link text-warning" to="/admin">
+                                    Admin Dashboard
+                                </Link>
+                            </li>
+                        )}
+
+                        <li className="nav-item mt-3">
+                            {isAuthenticated ? (
+                                <button
+                                    onClick={handleLogout}
+                                    className="btn btn-outline-danger w-100 rounded-pill"
+                                >
+                                    Logout
+                                </button>
+                            ) : (
+                                <Link to="/login" className="btn btn-danger w-100 rounded-pill">
+                                    Log In
+                                </Link>
+                            )}
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
