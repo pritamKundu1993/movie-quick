@@ -137,7 +137,7 @@ const FeaturedMovie = () => {
                                 </button>
                             </div>
                             <div className="modal-body p-0">
-                                <div className="ratio ratio-16x9">
+                                <div className="embed-responsive embed-responsive-16by9">
                                     <iframe
                                         width="1521"
                                         height="526"

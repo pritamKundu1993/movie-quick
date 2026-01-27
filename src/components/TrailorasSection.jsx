@@ -79,21 +79,16 @@ const TrailersSection = () => {
                 {/* Featured Trailer Player */}
                 <div className="position-relative rounded overflow-hidden mb-4">
                     {selectedTrailer && (
-                        <div className="ratio ratio-16x9" style={{ maxHeight: '500px' }}>
+                        <div className="embed-responsive embed-responsive-16by9">
                             <iframe
-                                width="1521"
-                                height="526"
                                 key={selectedTrailer.videoKey}
+                                className="embed-responsive-item"
                                 src={`https://www.youtube.com/embed/${selectedTrailer.videoKey}?rel=0`}
                                 title={selectedTrailer.movie.title}
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowFullScreen
                                 referrerPolicy="strict-origin-when-cross-origin"
-                                style={{
-                                    border: 'none',
-                                    borderRadius: '8px',
-                                    height: '600px',
-                                }}
+                                style={{ border: 'none' }}
                             ></iframe>
                         </div>
                     )}
